@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <!--Color primary-->
+    <color name="primary_ligth">#fdfdfd</color>
+    <color name="primary_light_activity">#f8f8f8</color>
+    <color name="primary_normal">#e9e9e9</color>
+    <color name="primary_normal_activity">#bababa</color>
+    <color name="primary_dark">#afafaf</color>
+    <color name="primary_dark_activity">#696969</color>
+    <color name="primary_darker">#525252</color>
+
+    <!--Color secundary-->
+    <color name="secundary_ligth">#ffe6e6</color>
+    <color name="secundary_light_activity">#ffb0b0</color>
+    <color name="secundary_normal">#ff0000</color>
+    <color name="secundary_normal_activity">#cc0000</color>
+    <color name="secundary_dark">#bf0000</color>
+    <color name="secundary_dark_activity">#730000</color>
+    <color name="secundary_darker">#590000</color>
+
+    <!--Color success-->
+    <color name="success_ligth">#e6ffe6</color>
+    <color name="success_light_activity">#b2ffb0</color>
+    <color name="success_normal">#05ff00</color>
+    <color name="success_normal_activity">#04cc00</color>
+    <color name="success_dark">#04bf00</color>
+    <color name="success_dark_activity">#027300</color>
+    <color name="success_darker">#025900</color>
+
+    <!--Color warning-->
+    <color name="warning_ligth">#fff6e6</color>
+    <color name="warning_light_activity">#ffe4b0</color>
+    <color name="warning_normal">#ffa800</color>
+    <color name="warning_normal_activity">#cc8600</color>
+    <color name="warning_dark">#bf7e00</color>
+    <color name="warning_dark_activity">#734c00</color>
+    <color name="warning_darker">#593b00</color>
+
+    <!--Color danger-->
+    <color name="danger_ligth">#ffeae6</color>
+    <color name="danger_light_activity">#fdbeb0</color>
+    <color name="danger_normal">#fa2d00</color>
+    <color name="danger_normal_activity">#c82400</color>
+    <color name="danger_dark">#bc2200</color>
+    <color name="danger_dark_activity">#701400</color>
+    <color name="danger_darker">#581000</color>
+
+    <!--Color neutral-->
+    <color name="neutral_ligth">#ececef</color>
+    <color name="neutral_light_activity">#c4c5ce</color>
+    <color name="neutral_normal">#424461</color>
+    <color name="neutral_normal_activity">#35364e</color>
+    <color name="neutral_dark">#323349</color>
+    <color name="neutral_dark_activity">#1e1f2c</color>
+    <color name="neutral_darker">#171822</color>
+
+
+    <!--pokemon colors types-->
+    <!--Color normal-->
+    <color name="normal_ligth">#f4f0eb</color>
+    <color name="normal_light_activity">#dcd1c1</color>
+    <color name="normal_normal">#8d6b37</color>
+    <color name="normal_normal_activity">#71562c</color>
+    <color name="normal_dark">#6a5029</color>
+    <color name="normal_dark_activity">#3f3019</color>
+    <color name="normal_darker">#312513</color>
+
+    <!--Color fire-->
+    <color name="fire_ligth">#fff3e6</color>
+    <color name="fire_light_activity">#ffdbb0</color>
+    <color name="fire_normal">#ff8a00</color>
+    <color name="fire_normal_activity">#cc6e00</color>
+    <color name="fire_dark">#bf6800</color>
+    <color name="fire_dark_activity">#733e00</color>
+    <color name="fire_darker">#593000</color>
+
+    <!--Color water-->
+    <color name="water_ligth">#e6e8ff</color>
+    <color name="water_light_activity">#b0b8ff</color>
+    <color name="water_normal">#001aff</color>
+    <color name="water_normal_activity">#0015cc</color>
+    <color name="water_dark">#0014bf</color>
+    <color name="water_dark_activity">#000c73</color>
+    <color name="water_darker">#000959</color>
+
+    <!--Color grass-->
+    <color name="grass_ligth">#e8ffe6</color>
+    <color name="grass_light_activity">#b6ffb0</color>
+    <color name="grass_normal">#14ff00</color>
+    <color name="grass_normal_activity">#10cc00</color>
+    <color name="grass_dark">#0fbf00</color>
+    <color name="grass_dark_activity">#097300</color>
+    <color name="grass_darker">#075900</color>
+
+    <!--Color eletric-->
+    <color name="eletric_ligth">#fffbe6</color>
+    <color name="eletric_light_activity">#fff2b0</color>
+    <color name="eletric_normal">#ffd600</color>
+    <color name="eletric_normal_activity">#ccab00</color>
+    <color name="eletric_dark">#bfa100</color>
+    <color name="eletric_dark_activity">#736000</color>
+    <color name="eletric_darker">#594b00</color>
+
+    <!--Color ice-->
+    <color name="ice_ligth">#f6fcff</color>
+    <color name="ice_light_activity">#e4f5ff</color>
+    <color name="ice_normal">#a8e0ff</color>
+    <color name="ice_normal_activity">#86b3cc</color>
+    <color name="ice_dark">#7ea8bf</color>
+    <color name="ice_dark_activity">#4c6573</color>
+    <color name="ice_darker">#3b4e59</color>
+
+    <!--Color fighting-->
+    <color name="fighting_ligth">#fbe8e8</color>
+    <color name="fighting_light_activity">#f1b9b9</color>
+    <color name="fighting_normal">#d31d1d</color>
+    <color name="fighting_normal_activity">#a91717</color>
+    <color name="fighting_dark">#9e1616</color>
+    <color name="fighting_dark_activity">#5f0d0d</color>
+    <color name="fighting_darker">#4a0a0a</color>
+
+    <!--Color poison-->
+    <color name="poison_ligth">#f2e6ff</color>
+    <color name="poison_light_activity">#d8b0ff</color>
+    <color name="poison_normal">#8000ff</color>
+    <color name="poison_normal_activity">#6600cc</color>
+    <color name="poison_dark">#6000bf</color>
+    <color name="poison_dark_activity">#3a0073</color>
+    <color name="poison_darker">#2d0059</color>
+
+    <!--Color ground-->
+    <color name="ground_ligth">#faf4ef</color>
+    <color name="ground_light_activity">#f0decd</color>
+    <color name="ground_normal">#cf955f</color>
+    <color name="ground_normal_activity">#a6774c</color>
+    <color name="ground_dark">#9b7047</color>
+    <color name="ground_dark_activity">#5d432b</color>
+    <color name="ground_darker">#483421</color>
+
+    <!--Color flying-->
+    <color name="flying_ligth">#faf5ff</color>
+    <color name="flying_light_activity">#eee1ff</color>
+    <color name="flying_normal">#c89dff</color>
+    <color name="flying_normal_activity">#a07ecc</color>
+    <color name="flying_dark">#9676bf</color>
+    <color name="flying_dark_activity">#5a4773</color>
+    <color name="flying_darker">#463759</color>
+
+    <!--Color physic-->
+    <color name="physic_ligth">#ffe6fc</color>
+    <color name="physic_light_activity">#ffb0f7</color>
+    <color name="physic_normal">#ff00e5</color>
+    <color name="physic_normal_activity">#cc00b7</color>
+    <color name="physic_dark">#bf00ac</color>
+    <color name="physic_dark_activity">#730067</color>
+    <color name="physic_darker">#590050</color>
+
+    <!--Color bug-->
+    <color name="bug_ligth">#eff2ee</color>
+    <color name="bug_light_activity">#cdd6c9</color>
+    <color name="bug_normal">#5e7a51</color>
+    <color name="bug_normal_activity">#4b6241</color>
+    <color name="bug_dark">#475c3d</color>
+    <color name="bug_dark_activity">#2a3724</color>
+    <color name="bug_darker">#212b1c</color>
+
+    <!--Color rock-->
+    <color name="rock_ligth">#eeeee8</color>
+    <color name="rock_light_activity">#cacbb8</color>
+    <color name="rock_normal">#53581a</color>
+    <color name="rock_normal_activity">#424615</color>
+    <color name="rock_dark">#3e4214</color>
+    <color name="rock_dark_activity">#25280c</color>
+    <color name="rock_darker">#1d1f09</color>
+
+    <!--Color ghost-->
+    <color name="ghost_ligth">#f5e6ff</color>
+    <color name="ghost_light_activity">#e1b0ff</color>
+    <color name="ghost_normal">#9e00ff</color>
+    <color name="ghost_normal_activity">#7e00cc</color>
+    <color name="ghost_dark">#7700bf</color>
+    <color name="ghost_dark_activity">#470073</color>
+    <color name="ghost_darker">#370059</color>
+
+    <!--Color dragon-->
+    <color name="dragon_ligth">#f0f0ff</color>
+    <color name="dragon_light_activity">#d0d1ff</color>
+    <color name="dragon_normal">#666cff</color>
+    <color name="dragon_normal_activity">#5256cc</color>
+    <color name="dragon_dark">#4d51bf</color>
+    <color name="dragon_dark_activity">#2e3173</color>
+    <color name="dragon_darker">#242659</color>
+
+    <!--Color dark-->
+    <color name="dark_ligth">#f0ede7</color>
+    <color name="dark_light_activity">#d1c8b5</color>
+    <color name="dark_normal">#6a4c11</color>
+    <color name="dark_normal_activity">#553d0e</color>
+    <color name="dark_dark">#50390d</color>
+    <color name="dark_dark_activity">#302208</color>
+    <color name="dark_darker">#251b06</color>
+
+    <!--Color steel-->
+    <color name="steel_ligth">#eff0f1</color>
+    <color name="steel_light_activity">#cdd1d3</color>
+    <color name="steel_normal">#5d6c70</color>
+    <color name="steel_normal_activity">#4a565a</color>
+    <color name="steel_dark">#465154</color>
+    <color name="steel_dark_activity">#2a3132</color>
+    <color name="steel_darker">#212627</color>
+
+    <!--Color fairy-->
+    <color name="fairy_ligth">#ffe6f5</color>
+    <color name="fairy_light_activity">#ffb0df</color>
+    <color name="fairy_normal">#ff0099</color>
+    <color name="fairy_normal_activity">#cc007a</color>
+    <color name="fairy_dark">#bf0073</color>
+    <color name="fairy_dark_activity">#730045</color>
+    <color name="fairy_darker">#590036</color>
+
+
+</resources>

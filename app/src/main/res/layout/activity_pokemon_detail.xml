@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.PokemonDetailActivity">
+
+
+    <ImageView
+        android:id="@+id/iv_card_pokemon_detail"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:src="@drawable/pokemon_item_details"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/divider" />
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="228dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/iv_pokemon_picture"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/iv_button_back"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="20dp"
+        android:src="@drawable/ic_backward"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iv_pokemon_picture"
+        app:tint="@color/white" />
+
+    <TextView
+        android:id="@+id/tv_name_pokemon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:fontFamily="@font/roboto_bold"
+        android:text="wartortle"
+        android:textColor="@color/white"
+        android:textSize="35sp"
+        app:layout_constraintStart_toStartOf="@+id/iv_pokemon_picture"
+        app:layout_constraintTop_toBottomOf="@+id/iv_pokemon_picture" />
+
+    <LinearLayout
+        android:id="@+id/ll_types_pokemon_detail"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="60dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tv_name_pokemon"
+        app:layout_constraintTop_toBottomOf="@+id/iv_pokemon_picture">
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="23dp"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/roboto_bold"
+        android:text="stats"
+        android:textColor="@color/white"
+        android:textSize="30sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_name_pokemon" />
+
+    <TextView
+        android:id="@+id/tv_hp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/roboto_medium"
+        android:text="hp"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/iv_card_pokemon_detail"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <TextView
+        android:id="@+id/tv_attack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/roboto_medium"
+        android:text="attack"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/iv_card_pokemon_detail"
+        app:layout_constraintTop_toBottomOf="@+id/tv_hp" />
+
+    <TextView
+        android:id="@+id/tv_defense"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/roboto_medium"
+        android:text="defense"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/iv_card_pokemon_detail"
+        app:layout_constraintTop_toBottomOf="@+id/tv_attack" />
+
+    <TextView
+        android:id="@+id/tv_special_attack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/roboto_medium"
+        android:text="special attack"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/iv_card_pokemon_detail"
+        app:layout_constraintTop_toBottomOf="@+id/tv_defense" />
+
+    <TextView
+        android:id="@+id/tv_special_defense"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/roboto_medium"
+        android:text="special defense"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/iv_card_pokemon_detail"
+        app:layout_constraintTop_toBottomOf="@+id/tv_special_attack" />
+
+    <TextView
+        android:id="@+id/tv_speed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/roboto_medium"
+        android:text="speed"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/iv_card_pokemon_detail"
+        app:layout_constraintTop_toBottomOf="@+id/tv_special_defense" />
+
+    <com.google.android.material.progressindicator.LinearProgressIndicator
+        android:id="@+id/lp_hp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:progress="23"
+        app:indicatorColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_hp"
+        app:layout_constraintEnd_toEndOf="@id/iv_card_pokemon_detail"
+        app:layout_constraintStart_toEndOf="@+id/tv_hp"
+        app:layout_constraintTop_toTopOf="@+id/tv_hp"
+        app:trackColor="@color/water_dark" />
+
+    <com.google.android.material.progressindicator.LinearProgressIndicator
+        android:id="@+id/lp_attack"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:progress="23"
+        app:indicatorColor="@color/white"
+        android:padding="10dp"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_attack"
+        app:layout_constraintEnd_toEndOf="@id/iv_card_pokemon_detail"
+        app:layout_constraintStart_toEndOf="@+id/tv_attack"
+        app:layout_constraintTop_toTopOf="@+id/tv_attack"
+        app:trackColor="@color/water_dark" />
+
+    <com.google.android.material.progressindicator.LinearProgressIndicator
+        android:id="@+id/lp_defense"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:progress="23"
+        app:indicatorColor="@color/white"
+        android:padding="10dp"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_defense"
+        app:layout_constraintEnd_toEndOf="@id/iv_card_pokemon_detail"
+        app:layout_constraintStart_toEndOf="@+id/tv_defense"
+        app:layout_constraintTop_toTopOf="@+id/tv_defense"
+        app:trackColor="@color/water_dark" />
+
+    <com.google.android.material.progressindicator.LinearProgressIndicator
+        android:id="@+id/lp_special_attack"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:progress="23"
+        app:indicatorColor="@color/white"
+        android:padding="10dp"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_special_attack"
+        app:layout_constraintEnd_toEndOf="@id/iv_card_pokemon_detail"
+        app:layout_constraintStart_toEndOf="@+id/tv_special_attack"
+        app:layout_constraintTop_toTopOf="@+id/tv_special_attack"
+        app:trackColor="@color/water_dark" />
+
+    <com.google.android.material.progressindicator.LinearProgressIndicator
+        android:id="@+id/lp_special_defense"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:progress="23"
+        app:indicatorColor="@color/white"
+        android:padding="10dp"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_special_defense"
+        app:layout_constraintEnd_toEndOf="@id/iv_card_pokemon_detail"
+        app:layout_constraintStart_toEndOf="@+id/tv_special_defense"
+        app:layout_constraintTop_toTopOf="@+id/tv_special_defense"
+        app:trackColor="@color/water_dark" />
+
+    <com.google.android.material.progressindicator.LinearProgressIndicator
+        android:id="@+id/lp_speed"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:progress="23"
+        app:indicatorColor="@color/white"
+        android:padding="10dp"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_speed"
+        app:layout_constraintEnd_toEndOf="@id/iv_card_pokemon_detail"
+        app:layout_constraintStart_toEndOf="@+id/tv_speed"
+        app:layout_constraintTop_toTopOf="@+id/tv_speed"
+        app:trackColor="@color/water_dark" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
