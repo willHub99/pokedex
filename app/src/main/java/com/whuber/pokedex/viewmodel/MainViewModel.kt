@@ -1,6 +1,7 @@
 package com.whuber.pokedex.viewmodel
 
-import android.util.Log
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.recyclerview.widget.RecyclerView
 import com.whuber.pokedex.api.ListPokemonResult
@@ -10,10 +11,12 @@ import com.whuber.pokedex.recyclerview.adapater.PokemonAdapter
 import com.whuber.pokedex.repository.PokemonRepository
 import com.whuber.pokedex.utils.PaginationUtils
 import com.whuber.pokedex.utils.UrlUtils
-import retrofit2.http.Url
 
 
 class MainViewModel: ViewModel() {
+
+    var listPokemonData: MutableLiveData<List<PokemonModel>> = MutableLiveData()
+    var list: LiveData<List<PokemonModel>> = listPokemonData
 
     private val repository = PokemonRepository()
     private var pagination = PaginationUtils()
@@ -85,9 +88,9 @@ class MainViewModel: ViewModel() {
                 }
 
                 pagination.results.let {
-
                     listPokemons = getPokemons(it)
                     recyclerView.post {
+                        listPokemonData.value = listPokemons
                         adapter.pagination(listPokemons)
                     }
                 }

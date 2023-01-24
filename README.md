@@ -1,5 +1,9 @@
 <h1 align="center"> Pokedex </h1>
 
+<p align="center">
+  <img alt="projeto Habits" src="./app/src/drawable/logo_github.png" width="100%">
+</p>
+
 ## 🚀 Tecnologias
 
 Esse projeto foi desenvolvido com as seguintes tecnologias:
@@ -17,10 +21,8 @@ A pokedex é um aplicativo com objetivo de listar todos os pokemons listados na 
 
 A documentação da API utilizada no projeto pode ser encontrada a seguir.
 
-- [NLWSetup](https://pokeapi.co/)
+- [pokeAPI](https://pokeapi.co/)
 
-
-- [NLWSetup](https://maykbrito.github.io/libs/NLWSetup/documentation/NLWSetup.html)
 
 ## 🔖 Layout
 

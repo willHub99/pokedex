@@ -7,10 +7,10 @@ import android.util.Log
 import android.view.View
 import android.view.WindowManager
 import android.widget.SearchView
+import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.whuber.pokedex.R
-import com.whuber.pokedex.api.PokemonModelResponse
 import com.whuber.pokedex.databinding.ActivityMainBinding
 import com.whuber.pokedex.model.PokemonModel
 import com.whuber.pokedex.recyclerview.`interface`.SelectListener
@@ -60,10 +60,16 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, SelectListener {
         if(view.id == R.id.iv_bt_back) {
             if (UrlUtils.previousPage.isNotEmpty() && UrlUtils.previousPage != null) {
                 viewModel.getPokemonsPagination(adapter, recyclerView, false)
+                viewModel.list.observe(this, Observer<List<PokemonModel>> {
+                    pokemons = it
+                })
             }
         } else if (view.id == R.id.iv_bt_next) {
             if (UrlUtils.nextPage.isNotEmpty() && UrlUtils.nextPage != null) {
                 viewModel.getPokemonsPagination(adapter, recyclerView, true)
+                viewModel.list.observe(this, Observer<List<PokemonModel>> {
+                    pokemons = it
+                })
             }
         }
     }
