@@ -1,7 +1,7 @@
 <h1 align="center"> Pokedex </h1>
 
 <p align="center">
-  <img alt="projeto Habits" src="./app/src/drawable/logo_github.png" width="100%">
+  <img alt="projeto Habits" src="https://github.com/willHub99/pokedex/blob/main/app/src/main/res/drawable/logo_github.png" width="100%">
 </p>
 
 ## 🚀 Tecnologias
