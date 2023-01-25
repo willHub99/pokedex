@@ -24,7 +24,6 @@ class PokemonMock {
     fun createPokemon(): List<PokemonModel> {
         for (i in 1..20) {
             generatedRandomAtributes()
-            var pokemonStats: StatsPokemonModel = StatsPokemonModel(i, hp, attack, defense, specialAttack, specialDefense, speed)
             var pokemonName: String = generatedRandomName()
             listTypes = generatedTypesPokemon()
             var pokemon: PokemonModel = PokemonModel(i, pokemonName, height, weight , listTypes , emptyList())

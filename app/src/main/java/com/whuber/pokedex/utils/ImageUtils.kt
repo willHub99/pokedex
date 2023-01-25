@@ -26,7 +26,7 @@ class ImageUtils {
         fun createImageTypePokemon(context: Context, layout: LinearLayout, listTypes: List<String>){
 
             val viewGroupParams: ViewGroup.LayoutParams = ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT)
-            var imagePokemonConstants: ImagePokemonConstants = ImagePokemonConstants(context)
+            var imagePokemonConstants: ImagePokemonConstants = ImagePokemonConstants()
 
             for (type in listTypes) {
                 var image: ImageView = ImageView(context)

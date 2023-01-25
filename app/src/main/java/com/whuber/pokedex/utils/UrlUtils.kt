@@ -1,11 +1,16 @@
 package com.whuber.pokedex.utils
 
+import android.graphics.pdf.PdfDocument.Page
+
 class UrlUtils {
 
     companion object {
 
         lateinit var previousPage: String
+        var currentPage: String = "https://pokeapi.co/api/v2/"
         lateinit var nextPage: String
+
+        var isbloquedCallConfiguratioRecyclerView = false
 
         const val urlPartOffset: String = "offset="
         const val urlPartLimit: String = "limit="

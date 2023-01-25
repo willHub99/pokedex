@@ -11,12 +11,14 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.whuber.pokedex.R
+import com.whuber.pokedex.api.PokemonModelResponse
 import com.whuber.pokedex.databinding.ActivityMainBinding
 import com.whuber.pokedex.model.PokemonModel
 import com.whuber.pokedex.recyclerview.`interface`.SelectListener
 import com.whuber.pokedex.recyclerview.adapater.PokemonAdapter
 import com.whuber.pokedex.utils.UrlUtils
 import com.whuber.pokedex.viewmodel.MainViewModel
+import retrofit2.http.Url
 
 class MainActivity : AppCompatActivity(), View.OnClickListener, SelectListener {
 
@@ -39,11 +41,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, SelectListener {
         binding.ivBtBack.setOnClickListener(this)
         binding.ivBtNext.setOnClickListener(this)
 
-        Thread(Runnable {
-
             configureRecyclerView()
-
-        }).start()
 
         configureFilterListener()
 
@@ -51,22 +49,38 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, SelectListener {
 
     }
 
-    override fun onStart() {
-        super.onStart()
+    override fun onResume() {
+        super.onResume()
+
+        Thread(Runnable {
+            recyclerView = findViewById<RecyclerView>(R.id.rv_pokemons)
+
+            val pagination = viewModel.pagination(UrlUtils.currentPage)
+            pagination.results.let {
+                pokemons = viewModel.getPokemons(it)
+                recyclerView.post {
+                    recyclerView.layoutManager = LinearLayoutManager(this)
+                    adapter = PokemonAdapter(pokemons, applicationContext, this)
+                    recyclerView.adapter = adapter
+                }
+            }
+        }).start()
 
     }
 
     override fun onClick(view: View) {
         if(view.id == R.id.iv_bt_back) {
             if (UrlUtils.previousPage.isNotEmpty() && UrlUtils.previousPage != null) {
-                viewModel.getPokemonsPagination(adapter, recyclerView, false)
+                UrlUtils.currentPage = UrlUtils.previousPage
+                viewModel.getPokemonsPagination(adapter, recyclerView, UrlUtils.previousPage)
                 viewModel.list.observe(this, Observer<List<PokemonModel>> {
                     pokemons = it
                 })
             }
         } else if (view.id == R.id.iv_bt_next) {
             if (UrlUtils.nextPage.isNotEmpty() && UrlUtils.nextPage != null) {
-                viewModel.getPokemonsPagination(adapter, recyclerView, true)
+                UrlUtils.currentPage = UrlUtils.nextPage
+                viewModel.getPokemonsPagination(adapter, recyclerView, UrlUtils.nextPage)
                 viewModel.list.observe(this, Observer<List<PokemonModel>> {
                     pokemons = it
                 })
@@ -96,20 +110,25 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, SelectListener {
     }
 
     private fun configureRecyclerView() {
-        var pageResult = viewModel.getPagePokemon()
+        if (!UrlUtils.isbloquedCallConfiguratioRecyclerView) {
+            UrlUtils.isbloquedCallConfiguratioRecyclerView = true
+            Thread(Runnable {
+                var pageResult = viewModel.getPagePokemon()
 
-        pageResult.let {
-            UrlUtils.previousPage(it.previous.toString())
-            UrlUtils.nextPage(it.next.toString())
-        }
+                pageResult.let {
+                    UrlUtils.previousPage(it.previous.toString())
+                    UrlUtils.nextPage(it.next.toString())
+                }
 
-        pageResult.results.let {
-            pokemons = viewModel.getPokemons(it)
-            recyclerView.post {
-                recyclerView.layoutManager = LinearLayoutManager(this)
-                adapter = PokemonAdapter(pokemons, applicationContext, this)
-                recyclerView.adapter = adapter
-            }
+                pageResult.results.let {
+                    pokemons = viewModel.getPokemons(it)
+                    recyclerView.post {
+                        recyclerView.layoutManager = LinearLayoutManager(this)
+                        adapter = PokemonAdapter(pokemons, applicationContext, this)
+                        recyclerView.adapter = adapter
+                    }
+                }
+            }).start()
         }
     }
 }

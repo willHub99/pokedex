@@ -1,5 +1,6 @@
 package com.whuber.pokedex.viewmodel
 
+import androidx.annotation.UiThread
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -12,6 +13,7 @@ import com.whuber.pokedex.repository.PokemonRepository
 import com.whuber.pokedex.utils.PaginationUtils
 import com.whuber.pokedex.utils.UrlUtils
 
+private const val BASE_URL: String = "https://pokeapi.co/api/v2/pokemon/"
 
 class MainViewModel: ViewModel() {
 
@@ -27,22 +29,18 @@ class MainViewModel: ViewModel() {
 
         var offset: Int = 0
         var limit: Int = 0
-
         if (url.contains(UrlUtils.urlPartOffset)) {
             offset = pagination.getOffset(url)
         }
-
         if (url.contains(UrlUtils.urlPartLimit)) {
             limit = pagination.getLimit(url)
         }
-
         return repository.getPagePaginationPokemon(offset, limit)!!
     }
 
     fun getPokemons(listPokemonsResponse: List<ListPokemonResult>): List<PokemonModel> {
         return listPokemonsResponse.map { pokemonResult ->
-
-            val id = pokemonResult.url.replace("https://pokeapi.co/api/v2/pokemon/", "").replace("/","").toInt()
+            val id = pokemonResult.url.replace(BASE_URL, "").replace("/","").toInt()
             val pokemonResult = repository.getPokemon(id)
             pokemonResult?.let { getPokemon(it.id) }!!
         }
@@ -71,14 +69,10 @@ class MainViewModel: ViewModel() {
         adapter.filter(filterPokemons)
     }
 
-    fun getPokemonsPagination(adapter: PokemonAdapter, recyclerView: RecyclerView, isNextPage: Boolean) {
+    fun getPokemonsPagination(adapter: PokemonAdapter, recyclerView: RecyclerView, url: String) {
             Thread(Runnable {
 
-                var pagination: PokemonModelResponse = if (isNextPage) {
-                    pagination(UrlUtils.nextPage)
-                } else {
-                    pagination((UrlUtils.previousPage))
-                }
+                var pagination: PokemonModelResponse = pagination(url)
 
                 var listPokemons: List<PokemonModel> = ArrayList<PokemonModel>()
 
@@ -86,7 +80,6 @@ class MainViewModel: ViewModel() {
                     UrlUtils.previousPage(it.previous.toString())
                     UrlUtils.nextPage(it.next.toString())
                 }
-
                 pagination.results.let {
                     listPokemons = getPokemons(it)
                     recyclerView.post {

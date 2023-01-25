@@ -3,7 +3,7 @@ package com.whuber.pokedex.constants
 import android.content.Context
 import com.whuber.pokedex.R
 
-class ImagePokemonConstants(context: Context) {
+class ImagePokemonConstants() {
 
     private val DEFAULT_ICON_TYPE: Int = R.drawable.normal
 

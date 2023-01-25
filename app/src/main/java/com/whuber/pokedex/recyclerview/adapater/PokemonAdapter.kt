@@ -67,7 +67,7 @@ class PokemonAdapter(
     fun settingViewPokemonDetail(pokemon: PokemonModel, holder: ViewHolderPokemon) {
         //change background box detail pokemon
        var color = TypesPokemonConstants(context).getColorByTypePokemon(pokemon.types[0])
-       ColorsUtils.changeBackgroundColorBoxDetailPokemon(context, holder.ivBoxDetailPokemon, color)
+       ColorsUtils.changeBackgroundColorBoxDetailPokemon(holder.ivBoxDetailPokemon, color)
 
         //set image pokemon
         ImageUtils.setImagePokemon(context, pokemon.url, holder.ivPokemonPhoto)

@@ -31,7 +31,7 @@ class PokemonDetailActivity : AppCompatActivity(), View.OnClickListener {
         viewModel = PokemonDetailViewModel()
 
         var bundle: Bundle ?= intent.extras
-        if(bundle!!.get("id") != null) {
+        if(bundle!!.getInt("id") != null) {
             Thread(Runnable {
                 detailPokemon(bundle)
             }).start()
@@ -49,11 +49,11 @@ class PokemonDetailActivity : AppCompatActivity(), View.OnClickListener {
 
     fun detailPokemon(bundle: Bundle) {
 
-        pokemon = viewModel.getPokemon(bundle!!.get("id") as Int)
+        pokemon = viewModel.getPokemon(bundle!!.getInt("id"))
         runOnUiThread {
             ImageUtils.setImagePokemon(this, pokemon.url, binding.ivPokemonPicture)
             val colorBackground = TypesPokemonConstants(this).getColorByTypePokemon(pokemon.types[0])
-            ColorsUtils.changeBackgroundColorBoxDetailPokemon(this, binding.ivCardPokemonDetail, colorBackground)
+            ColorsUtils.changeBackgroundColorBoxDetailPokemon(binding.ivCardPokemonDetail, colorBackground)
 
             val trackColorLinearProgress = TypesPokemonConstants(this).getTrackColorByTypePokemon(pokemon.types[0])
 
