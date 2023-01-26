@@ -10,7 +10,6 @@ class UrlUtils {
         var currentPage: String = "https://pokeapi.co/api/v2/"
         lateinit var nextPage: String
 
-        var isbloquedCallConfiguratioRecyclerView = false
 
         const val urlPartOffset: String = "offset="
         const val urlPartLimit: String = "limit="

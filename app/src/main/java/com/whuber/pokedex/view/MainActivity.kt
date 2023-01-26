@@ -41,7 +41,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, SelectListener {
         binding.ivBtBack.setOnClickListener(this)
         binding.ivBtNext.setOnClickListener(this)
 
-            configureRecyclerView()
+        configureRecyclerView()
 
         configureFilterListener()
 
@@ -110,8 +110,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, SelectListener {
     }
 
     private fun configureRecyclerView() {
-        if (!UrlUtils.isbloquedCallConfiguratioRecyclerView) {
-            UrlUtils.isbloquedCallConfiguratioRecyclerView = true
             Thread(Runnable {
                 var pageResult = viewModel.getPagePokemon()
 
@@ -129,6 +127,5 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, SelectListener {
                     }
                 }
             }).start()
-        }
     }
 }

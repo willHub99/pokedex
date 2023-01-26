@@ -43,7 +43,7 @@ class PokemonDetailActivity : AppCompatActivity(), View.OnClickListener {
 
     override fun onClick(view: View) {
         if (view.id == R.id.iv_button_back) {
-            startActivity(Intent(this, MainActivity::class.java))
+            finish()
         }
     }
 
