@@ -26,15 +26,8 @@ class MainViewModel: ViewModel() {
     fun getPagePokemon (): PokemonModelResponse = repository.getPagePokemon()!!
 
     fun pagination(url: String): PokemonModelResponse {
-
-        var offset: Int = 0
-        var limit: Int = 0
-        if (url.contains(UrlUtils.urlPartOffset)) {
-            offset = pagination.getOffset(url)
-        }
-        if (url.contains(UrlUtils.urlPartLimit)) {
-            limit = pagination.getLimit(url)
-        }
+        var offset: Int = pagination.getOffset(url)
+        var limit: Int =  pagination.getLimit(url)
         return repository.getPagePaginationPokemon(offset, limit)!!
     }
 

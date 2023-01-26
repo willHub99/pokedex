@@ -1,6 +1,5 @@
 package com.whuber.pokedex.constants
 
-import android.content.Context
 import com.whuber.pokedex.R
 
 class ImagePokemonConstants() {
