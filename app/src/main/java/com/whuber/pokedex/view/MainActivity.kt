@@ -3,7 +3,6 @@ package com.whuber.pokedex.view
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.view.WindowManager
 import android.widget.SearchView
@@ -11,14 +10,16 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.whuber.pokedex.R
-import com.whuber.pokedex.api.PokemonModelResponse
+import com.whuber.pokedex.api.ListPokemonResult
 import com.whuber.pokedex.databinding.ActivityMainBinding
 import com.whuber.pokedex.model.PokemonModel
 import com.whuber.pokedex.recyclerview.`interface`.SelectListener
 import com.whuber.pokedex.recyclerview.adapater.PokemonAdapter
 import com.whuber.pokedex.utils.UrlUtils
 import com.whuber.pokedex.viewmodel.MainViewModel
-import retrofit2.http.Url
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity(), View.OnClickListener, SelectListener {
 
@@ -49,40 +50,40 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, SelectListener {
 
     }
 
-    override fun onResume() {
+   override fun onResume() {
         super.onResume()
 
-        Thread(Runnable {
-            recyclerView = findViewById<RecyclerView>(R.id.rv_pokemons)
+       viewModel.getPageFromPagination(UrlUtils.currentPage)
 
-            val pagination = viewModel.pagination(UrlUtils.currentPage)
-            pagination.results.let {
-                pokemons = viewModel.getPokemons(it)
-                recyclerView.post {
-                    recyclerView.layoutManager = LinearLayoutManager(this)
-                    adapter = PokemonAdapter(pokemons, applicationContext, this)
-                    recyclerView.adapter = adapter
-                }
-            }
-        }).start()
-
+       viewModel.listPokemonResult.observe(this, Observer<List<ListPokemonResult>>{
+           pokemons = viewModel.convertListPokemonResultToListPokemonModel(it)
+           GlobalScope.launch(Dispatchers.Main) {
+               adapter.pagination(pokemons)
+           }
+       })
     }
 
     override fun onClick(view: View) {
         if(view.id == R.id.iv_bt_back) {
             if (UrlUtils.previousPage.isNotEmpty() && UrlUtils.previousPage != null) {
                 UrlUtils.currentPage = UrlUtils.previousPage
-                viewModel.getPokemonsPagination(adapter, recyclerView, UrlUtils.previousPage)
-                viewModel.list.observe(this, Observer<List<PokemonModel>> {
-                    pokemons = it
+                viewModel.getPageFromPagination(UrlUtils.previousPage)
+                viewModel.listPokemonResult.observe(this, Observer<List<ListPokemonResult>>{
+                    pokemons = viewModel.convertListPokemonResultToListPokemonModel(it)
+                    GlobalScope.launch(Dispatchers.Main) {
+                        adapter.pagination(pokemons)
+                    }
                 })
             }
         } else if (view.id == R.id.iv_bt_next) {
             if (UrlUtils.nextPage.isNotEmpty() && UrlUtils.nextPage != null) {
                 UrlUtils.currentPage = UrlUtils.nextPage
-                viewModel.getPokemonsPagination(adapter, recyclerView, UrlUtils.nextPage)
-                viewModel.list.observe(this, Observer<List<PokemonModel>> {
-                    pokemons = it
+                viewModel.getPageFromPagination(UrlUtils.nextPage)
+                viewModel.listPokemonResult.observe(this, Observer<List<ListPokemonResult>>{
+                    pokemons = viewModel.convertListPokemonResultToListPokemonModel(it)
+                    GlobalScope.launch(Dispatchers.Main) {
+                        adapter.pagination(pokemons)
+                    }
                 })
             }
         }
@@ -94,7 +95,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, SelectListener {
         startActivity(intent)
     }
 
-    fun configureFilterListener () {
+    private fun configureFilterListener () {
         searchView.setOnQueryTextListener(object: SearchView.OnQueryTextListener,
             androidx.appcompat.widget.SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
@@ -110,22 +111,15 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, SelectListener {
     }
 
     private fun configureRecyclerView() {
-            Thread(Runnable {
-                var pageResult = viewModel.getPagePokemon()
+        viewModel.getPagePokemon()
 
-                pageResult.let {
-                    UrlUtils.previousPage(it.previous.toString())
-                    UrlUtils.nextPage(it.next.toString())
-                }
-
-                pageResult.results.let {
-                    pokemons = viewModel.getPokemons(it)
-                    recyclerView.post {
-                        recyclerView.layoutManager = LinearLayoutManager(this)
-                        adapter = PokemonAdapter(pokemons, applicationContext, this)
-                        recyclerView.adapter = adapter
-                    }
-                }
-            }).start()
+        viewModel.listPokemonResult.observe(this, Observer<List<ListPokemonResult>>{
+            pokemons = viewModel.convertListPokemonResultToListPokemonModel(it)
+            recyclerView.post {
+                recyclerView.layoutManager = LinearLayoutManager(this)
+                adapter = PokemonAdapter(pokemons, applicationContext, this)
+                recyclerView.adapter = adapter
+            }
+        })
     }
 }
