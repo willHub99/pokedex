@@ -12,6 +12,9 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 - XML
 - Git e Github
 - Retrofit
+- coroutines
+- junit
+- MVVM
 
 ## 💻 Projeto
 
