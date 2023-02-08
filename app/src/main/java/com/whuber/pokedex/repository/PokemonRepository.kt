@@ -37,14 +37,10 @@ class PokemonRepository {
         return api.getPagePagination(offset, limit)
     }
 
-        fun getPagePaginationPokemon(offset: Int = 0, limit: Int = 0): PokemonModelResponse? {
-            val call: Call<PokemonModelResponse> = service.getPokemonPagination(offset, limit)
-            return call.execute().body()
-        }
 
-        fun getPokemon(id: Int): ListPokemonResult? {
-            val call = service.getPokemon(id)
-            return call.execute().body()
-        }
+    fun getPokemon(id: Int): ListPokemonResult? {
+        val call = service.getPokemon(id)
+        return call.execute().body()
+    }
 
 }

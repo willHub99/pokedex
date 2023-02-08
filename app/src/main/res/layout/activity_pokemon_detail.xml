@@ -14,23 +14,15 @@
         android:src="@drawable/pokemon_item_details"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/divider" />
-
-    <View
-        android:id="@+id/divider"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginTop="228dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/iv_pokemon_picture"
+        app:layout_constraintVertical_bias="0.0" />
 
     <ImageView
         android:id="@+id/iv_pokemon_picture"
-        android:layout_width="250dp"
-        android:layout_height="250dp"
+        android:layout_width="225dp"
+        android:layout_height="225dp"
         android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -41,9 +33,10 @@
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
         android:src="@drawable/ic_backward"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/iv_pokemon_picture"
+        app:layout_constraintTop_toTopOf="@+id/iv_card_pokemon_detail"
         app:tint="@color/white" />
 
     <TextView
@@ -168,6 +161,7 @@
         android:layout_height="wrap_content"
         android:padding="10dp"
         android:progress="23"
+        app:trackThickness="7dp"
         android:max="100"
         android:min="0"
         app:indicatorColor="@color/white"
@@ -182,6 +176,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:progress="23"
+        app:trackThickness="7dp"
         app:indicatorColor="@color/white"
         android:max="100"
         android:min="0"
@@ -197,6 +192,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:progress="23"
+        app:trackThickness="7dp"
         app:indicatorColor="@color/white"
         android:max="100"
         android:min="0"
@@ -212,6 +208,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:progress="23"
+        app:trackThickness="7dp"
         app:indicatorColor="@color/white"
         android:max="100"
         android:min="0"
@@ -227,6 +224,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:progress="23"
+        app:trackThickness="7dp"
         app:indicatorColor="@color/white"
         android:max="100"
         android:min="0"
@@ -242,6 +240,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:progress="23"
+        app:trackThickness="7dp"
         app:indicatorColor="@color/white"
         android:max="100"
         android:min="0"

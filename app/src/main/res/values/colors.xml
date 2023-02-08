@@ -92,13 +92,13 @@
     <color name="water_darker">#000959</color>
 
     <!--Color grass-->
-    <color name="grass_ligth">#e8ffe6</color>
-    <color name="grass_light_activity">#b6ffb0</color>
-    <color name="grass_normal">#14ff00</color>
-    <color name="grass_normal_activity">#10cc00</color>
-    <color name="grass_dark">#0fbf00</color>
-    <color name="grass_dark_activity">#097300</color>
-    <color name="grass_darker">#075900</color>
+    <color name="grass_ligth">#e8fce6</color>
+    <color name="grass_light_activity">#b8f6b3</color>
+    <color name="grass_normal">#1be309</color>
+    <color name="grass_normal_activity">#16b607</color>
+    <color name="grass_dark">#14aa07</color>
+    <color name="grass_dark_activity">#0c6604</color>
+    <color name="grass_darker">#094f03</color>
 
     <!--Color eletric-->
     <color name="eletric_ligth">#fffbe6</color>
