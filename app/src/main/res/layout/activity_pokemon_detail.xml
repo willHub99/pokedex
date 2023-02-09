@@ -14,15 +14,27 @@
         android:src="@drawable/pokemon_item_details"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/iv_pokemon_picture" />
+        app:layout_constraintTop_toBottomOf="@+id/view_baseline"
+        app:layout_constraintVertical_bias="1.0" />
 
     <ImageView
         android:id="@+id/iv_pokemon_picture"
-        android:layout_width="225dp"
-        android:layout_height="225dp"
-        android:layout_marginTop="8dp"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:layout_marginTop="15dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/view_baseline"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="160dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -30,8 +42,8 @@
         android:id="@+id/iv_button_back"
         android:layout_width="48dp"
         android:layout_height="48dp"
+        android:layout_marginTop="20dp"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="10dp"
         android:src="@drawable/ic_backward"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/iv_card_pokemon_detail"
@@ -41,8 +53,8 @@
         android:id="@+id/tv_name_pokemon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
-        android:fontFamily="@font/roboto_bold"
+        android:layout_marginTop="15dp"
+        android:fontFamily="@font/roboto_light"
         tools:text="wartortle"
         android:textColor="@color/white"
         android:textSize="35sp"
@@ -53,12 +65,11 @@
         android:id="@+id/ll_types_pokemon_detail"
         android:layout_width="0dp"
         android:layout_height="60dp"
-        android:layout_marginTop="60dp"
         android:gravity="center"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/tv_name_pokemon"
-        app:layout_constraintTop_toBottomOf="@+id/iv_pokemon_picture">
+        app:layout_constraintTop_toTopOf="@+id/tv_name_pokemon">
 
     </LinearLayout>
 
@@ -68,7 +79,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="23dp"
         android:layout_marginTop="16dp"
-        android:fontFamily="@font/roboto_bold"
+        android:fontFamily="@font/roboto_light"
         android:text="@string/stats"
         android:textColor="@color/white"
         android:textSize="30sp"
@@ -153,34 +164,37 @@
         app:layout_constraintStart_toStartOf="@+id/iv_card_pokemon_detail"
         app:layout_constraintTop_toBottomOf="@+id/tv_special_defense" />
 
+
     <com.google.android.material.progressindicator.LinearProgressIndicator
         android:id="@+id/lp_hp"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:progress="23"
-        app:trackThickness="7dp"
         android:max="500"
         android:min="0"
+        android:padding="10dp"
+        android:progress="23"
         app:indicatorColor="@color/white"
         app:layout_constraintBottom_toBottomOf="@+id/tv_hp"
         app:layout_constraintEnd_toStartOf="@id/tv_value_hp"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/tv_hp"
         app:layout_constraintTop_toTopOf="@+id/tv_hp"
-        app:trackColor="@color/water_dark" />
-
-
+        app:layout_constraintVertical_bias="0.0"
+        app:trackColor="@color/water_dark"
+        app:trackCornerRadius="10dp"
+        app:trackThickness="5dp" />
 
     <com.google.android.material.progressindicator.LinearProgressIndicator
         android:id="@+id/lp_attack"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:progress="23"
-        app:trackThickness="7dp"
+        app:trackThickness="5dp"
         app:indicatorColor="@color/white"
         android:max="500"
         android:min="0"
         android:padding="10dp"
+        app:trackCornerRadius="10dp"
         app:layout_constraintBottom_toBottomOf="@+id/tv_attack"
         app:layout_constraintEnd_toStartOf="@id/tv_value_attack"
         app:layout_constraintStart_toEndOf="@+id/tv_attack"
@@ -192,10 +206,11 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:progress="23"
-        app:trackThickness="7dp"
+        app:trackThickness="5dp"
         app:indicatorColor="@color/white"
         android:max="500"
         android:min="0"
+        app:trackCornerRadius="10dp"
         android:padding="10dp"
         app:layout_constraintBottom_toBottomOf="@+id/tv_defense"
         app:layout_constraintEnd_toStartOf="@id/tv_value_defense"
@@ -208,10 +223,11 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:progress="23"
-        app:trackThickness="7dp"
+        app:trackThickness="5dp"
         app:indicatorColor="@color/white"
         android:max="500"
         android:min="0"
+        app:trackCornerRadius="10dp"
         android:padding="10dp"
         app:layout_constraintBottom_toBottomOf="@+id/tv_special_attack"
         app:layout_constraintEnd_toStartOf="@id/tv_value_special_attack"
@@ -224,10 +240,11 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:progress="23"
-        app:trackThickness="7dp"
+        app:trackThickness="5dp"
         app:indicatorColor="@color/white"
         android:max="500"
         android:min="0"
+        app:trackCornerRadius="10dp"
         android:padding="10dp"
         app:layout_constraintBottom_toBottomOf="@+id/tv_special_defense"
         app:layout_constraintEnd_toStartOf="@id/tv_value_special_defense"
@@ -240,7 +257,8 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:progress="23"
-        app:trackThickness="7dp"
+        app:trackThickness="5dp"
+        app:trackCornerRadius="10dp"
         app:indicatorColor="@color/white"
         android:max="500"
         android:min="0"
