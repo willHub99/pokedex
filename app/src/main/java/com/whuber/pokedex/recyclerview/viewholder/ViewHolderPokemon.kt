@@ -14,6 +14,6 @@ class ViewHolderPokemon(itemView: View) : RecyclerView.ViewHolder(itemView) {
     val tvWeight: TextView = itemView.findViewById(R.id.tv_weight_value)
     val tvHeight: TextView = itemView.findViewById(R.id.tv_height_value)
     val llTypesPokemons: LinearLayout = itemView.findViewById(R.id.ll_types_pokemon)
-
+    val view: View = itemView.findViewById(R.id.view)
 
 }

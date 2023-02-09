@@ -4,10 +4,12 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.ViewGroup.MarginLayoutParams
 import androidx.recyclerview.widget.RecyclerView
 import com.whuber.pokedex.R
 import com.whuber.pokedex.constants.TypesPokemonConstants
 import com.whuber.pokedex.model.PokemonModel
+import com.whuber.pokedex.recyclerview.*
 import com.whuber.pokedex.recyclerview.`interface`.SelectListener
 import com.whuber.pokedex.recyclerview.viewholder.ViewHolderPokemon
 import com.whuber.pokedex.utils.ColorsUtils
@@ -43,7 +45,16 @@ class PokemonAdapter(
             }
         })
 
+        setVisibilityViewInFirstPokemonList(position, holder.view)
 
+    }
+
+    private fun setVisibilityViewInFirstPokemonList(position: Int, view: View) {
+        if (position == 0) {
+            view.visibility = View.VISIBLE
+        } else {
+            view.visibility = View.GONE
+        }
     }
 
     override fun getItemCount(): Int {

@@ -15,11 +15,11 @@ class UrlUtils {
         const val urlPartLimit: String = "limit="
 
         fun previousPage(url: String) {
-            previousPage = url ?: ""
+            previousPage = url
         }
 
         fun nextPage(url: String) {
-            nextPage = url ?: ""
+            nextPage = url
         }
 
 
