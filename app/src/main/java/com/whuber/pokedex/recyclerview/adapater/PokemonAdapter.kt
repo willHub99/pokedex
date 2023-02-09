@@ -55,11 +55,6 @@ class PokemonAdapter(
         notifyDataSetChanged()
     }
 
-    fun pagination (list: List<PokemonModel>) {
-        this.listPokemons = list
-        notifyDataSetChanged()
-    }
-
     fun settingViewPokemonDetail(pokemon: PokemonModel, holder: ViewHolderPokemon) {
         //change background box detail pokemon
        var color = TypesPokemonConstants(context).getColorByTypePokemon(pokemon.types[0])

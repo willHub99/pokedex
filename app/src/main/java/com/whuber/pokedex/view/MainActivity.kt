@@ -7,6 +7,7 @@ import android.view.View
 import android.view.WindowManager
 import android.widget.SearchView
 import androidx.lifecycle.Observer
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.whuber.pokedex.R
@@ -17,10 +18,7 @@ import com.whuber.pokedex.recyclerview.`interface`.SelectListener
 import com.whuber.pokedex.recyclerview.adapater.PokemonAdapter
 import com.whuber.pokedex.utils.UrlUtils
 import com.whuber.pokedex.viewmodel.MainViewModel
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
+import kotlinx.coroutines.*
 
 class MainActivity : AppCompatActivity(), View.OnClickListener, SelectListener {
 
@@ -51,19 +49,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, SelectListener {
 
     }
 
-   override fun onResume() {
-        super.onResume()
-
-       viewModel.getPageFromPagination(UrlUtils.currentPage)
-
-       viewModel.listPokemonResult.observe(this, Observer<List<ListPokemonResult>>{
-           pokemons = viewModel.convertListPokemonResultToListPokemonModel(it)
-           GlobalScope.launch(Dispatchers.Main) {
-               adapter.pagination(pokemons)
-           }
-       })
-    }
-
     override fun onClick(view: View) {
         if(view.id == R.id.iv_bt_back) {
             if (UrlUtils.previousPage.isNotEmpty()) {
@@ -71,9 +56,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, SelectListener {
                 viewModel.getPageFromPagination(UrlUtils.previousPage)
                 viewModel.listPokemonResult.observe(this, Observer<List<ListPokemonResult>>{
                     pokemons = viewModel.convertListPokemonResultToListPokemonModel(it)
-                    GlobalScope.launch(Dispatchers.Main) {
-                        adapter.pagination(pokemons)
-                    }
                 })
             }
         } else if (view.id == R.id.iv_bt_next) {
@@ -82,9 +64,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, SelectListener {
                 viewModel.getPageFromPagination(UrlUtils.nextPage)
                 viewModel.listPokemonResult.observe(this, Observer<List<ListPokemonResult>>{
                     pokemons = viewModel.convertListPokemonResultToListPokemonModel(it)
-                    GlobalScope.launch(Dispatchers.Main) {
-                        adapter.pagination(pokemons)
-                    }
                 })
             }
         }
