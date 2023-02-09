@@ -45,7 +45,7 @@ class PokemonDetailActivity : AppCompatActivity(), View.OnClickListener {
 
     private fun detailPokemon(bundle: Bundle) {
 
-        viewModel.getPokemon(bundle!!.getInt("id"))
+        viewModel.getPokemon(bundle.getInt("id"))
 
         viewModel.pokemonResponse.observe(this, Observer<ListPokemonResult> { result ->
             Log.d("detailPokemon", result.toString())
@@ -58,18 +58,18 @@ class PokemonDetailActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun convertListPokemonResultInPokemonModel(pokemonResult: ListPokemonResult): PokemonModel {
-        return pokemonResult?.let {pokemon ->
+        return pokemonResult.let { pokemon ->
             PokemonModel(
                 pokemon.id,
                 pokemon.name,
                 pokemon.height,
                 pokemon.weight,
-                pokemon.types.map {type ->
+                pokemon.types.map { type ->
                     type.type.type
                 } as MutableList<String>,
                 pokemon.stats
             )
-        }!!
+        }
     }
 
     private fun bindingColorIndicatorLinearProgressIndicator() {
@@ -83,18 +83,12 @@ class PokemonDetailActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun bindingValueProgressLinearProgressIndicator() {
-        val stringResourceHpStat: String = getString(R.string.attribute_hp)
-        binding.tvHp.text = stringResourceHpStat + " " + pokemon.stats[0].stat
-        val stringResourceAttackStat: String = getString(R.string.attribute_attack)
-        binding.tvAttack.text = stringResourceAttackStat + " " + pokemon.stats[1].stat
-        val stringResourceDefenseStat: String = getString(R.string.attribute_defense)
-        binding.tvDefense.text = stringResourceDefenseStat + " " +  pokemon.stats[2].stat
-        val stringResourceSpecialAttackStat: String = getString(R.string.attribute_special_attack)
-        binding.tvSpecialAttack.text = stringResourceSpecialAttackStat + " " +  pokemon.stats[3].stat
-        val stringResourceSpecialDefenseStat: String = getString(R.string.attribute_special_defense)
-        binding.tvSpecialDefense.text = stringResourceSpecialDefenseStat + " " +  pokemon.stats[4].stat
-        val stringResourceSpeedStat: String = getString(R.string.attribute_speed)
-        binding.tvSpeed.text = stringResourceSpeedStat + " " +  pokemon.stats[5].stat
+        binding.tvValueHp.text = pokemon.stats[0].stat.toString()
+        binding.tvValueAttack.text = pokemon.stats[1].stat.toString()
+        binding.tvValueDefense.text = pokemon.stats[2].stat.toString()
+        binding.tvValueSpecialAttack.text = pokemon.stats[3].stat.toString()
+        binding.tvValueSpecialDefense.text = pokemon.stats[4].stat.toString()
+        binding.tvValueSpeed.text = pokemon.stats[5].stat.toString()
     }
 
     private fun bindingStatsPokemonIntoLinearProgressIndicator() {

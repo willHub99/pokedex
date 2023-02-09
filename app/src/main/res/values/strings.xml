@@ -4,13 +4,14 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <!--Strings used in xml file to display each attribute of pokemon with your value -->
-    <string name="attribute_hp">hp: </string>
-    <string name="attribute_attack">attack: </string>
-    <string name="attribute_special_attack">special attack: </string>
-    <string name="attribute_defense">defense: </string>
-    <string name="attribute_special_defense">special defense: </string>
-    <string name="attribute_speed">speed: </string>
-    <string name="weight">weight:</string>
-    <string name="height">height:</string>
+    <string name="attribute_hp">hp</string>
+    <string name="attribute_attack">attack</string>
+    <string name="attribute_special_attack">special attack</string>
+    <string name="attribute_defense">defense</string>
+    <string name="attribute_special_defense">special defense</string>
+    <string name="attribute_speed">speed</string>
+    <string name="weight">weight</string>
+    <string name="height">height</string>
+    <string name="stats">stats</string>
 
 </resources>

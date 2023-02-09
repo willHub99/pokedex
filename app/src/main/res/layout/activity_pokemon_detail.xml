@@ -14,10 +14,8 @@
         android:src="@drawable/pokemon_item_details"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/iv_pokemon_picture"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/iv_pokemon_picture" />
 
     <ImageView
         android:id="@+id/iv_pokemon_picture"
@@ -45,7 +43,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="60dp"
         android:fontFamily="@font/roboto_bold"
-        android:text="wartortle"
+        tools:text="wartortle"
         android:textColor="@color/white"
         android:textSize="35sp"
         app:layout_constraintStart_toStartOf="@+id/iv_pokemon_picture"
@@ -71,7 +69,7 @@
         android:layout_marginStart="23dp"
         android:layout_marginTop="16dp"
         android:fontFamily="@font/roboto_bold"
-        android:text="stats"
+        android:text="@string/stats"
         android:textColor="@color/white"
         android:textSize="30sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -84,7 +82,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:fontFamily="@font/roboto_medium"
-        android:text="hp"
+        android:text="@string/attribute_hp"
         android:textColor="@color/white"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="@+id/iv_card_pokemon_detail"
@@ -97,7 +95,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:fontFamily="@font/roboto_medium"
-        android:text="attack"
+        android:text="@string/attribute_attack"
         android:textColor="@color/white"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="@+id/iv_card_pokemon_detail"
@@ -110,7 +108,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:fontFamily="@font/roboto_medium"
-        android:text="defense"
+        android:text="@string/attribute_defense"
         android:textColor="@color/white"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="@+id/iv_card_pokemon_detail"
@@ -123,7 +121,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:fontFamily="@font/roboto_medium"
-        android:text="special attack"
+        android:text="@string/attribute_special_attack"
         android:textColor="@color/white"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="@+id/iv_card_pokemon_detail"
@@ -136,7 +134,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:fontFamily="@font/roboto_medium"
-        android:text="special defense"
+        android:text="@string/attribute_special_defense"
         android:textColor="@color/white"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="@+id/iv_card_pokemon_detail"
@@ -149,7 +147,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:fontFamily="@font/roboto_medium"
-        android:text="speed"
+        android:text="@string/attribute_speed"
         android:textColor="@color/white"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="@+id/iv_card_pokemon_detail"
@@ -166,10 +164,12 @@
         android:min="0"
         app:indicatorColor="@color/white"
         app:layout_constraintBottom_toBottomOf="@+id/tv_hp"
-        app:layout_constraintEnd_toEndOf="@id/iv_card_pokemon_detail"
+        app:layout_constraintEnd_toStartOf="@id/tv_value_hp"
         app:layout_constraintStart_toEndOf="@+id/tv_hp"
         app:layout_constraintTop_toTopOf="@+id/tv_hp"
         app:trackColor="@color/water_dark" />
+
+
 
     <com.google.android.material.progressindicator.LinearProgressIndicator
         android:id="@+id/lp_attack"
@@ -182,7 +182,7 @@
         android:min="0"
         android:padding="10dp"
         app:layout_constraintBottom_toBottomOf="@+id/tv_attack"
-        app:layout_constraintEnd_toEndOf="@id/iv_card_pokemon_detail"
+        app:layout_constraintEnd_toStartOf="@id/tv_value_attack"
         app:layout_constraintStart_toEndOf="@+id/tv_attack"
         app:layout_constraintTop_toTopOf="@+id/tv_attack"
         app:trackColor="@color/water_dark" />
@@ -198,7 +198,7 @@
         android:min="0"
         android:padding="10dp"
         app:layout_constraintBottom_toBottomOf="@+id/tv_defense"
-        app:layout_constraintEnd_toEndOf="@id/iv_card_pokemon_detail"
+        app:layout_constraintEnd_toStartOf="@id/tv_value_defense"
         app:layout_constraintStart_toEndOf="@+id/tv_defense"
         app:layout_constraintTop_toTopOf="@+id/tv_defense"
         app:trackColor="@color/water_dark" />
@@ -214,7 +214,7 @@
         android:min="0"
         android:padding="10dp"
         app:layout_constraintBottom_toBottomOf="@+id/tv_special_attack"
-        app:layout_constraintEnd_toEndOf="@id/iv_card_pokemon_detail"
+        app:layout_constraintEnd_toStartOf="@id/tv_value_special_attack"
         app:layout_constraintStart_toEndOf="@+id/tv_special_attack"
         app:layout_constraintTop_toTopOf="@+id/tv_special_attack"
         app:trackColor="@color/water_dark" />
@@ -230,7 +230,7 @@
         android:min="0"
         android:padding="10dp"
         app:layout_constraintBottom_toBottomOf="@+id/tv_special_defense"
-        app:layout_constraintEnd_toEndOf="@id/iv_card_pokemon_detail"
+        app:layout_constraintEnd_toStartOf="@id/tv_value_special_defense"
         app:layout_constraintStart_toEndOf="@+id/tv_special_defense"
         app:layout_constraintTop_toTopOf="@+id/tv_special_defense"
         app:trackColor="@color/water_dark" />
@@ -246,10 +246,88 @@
         android:min="0"
         android:padding="10dp"
         app:layout_constraintBottom_toBottomOf="@+id/tv_speed"
-        app:layout_constraintEnd_toEndOf="@id/iv_card_pokemon_detail"
+        app:layout_constraintEnd_toStartOf="@id/tv_value_speed"
         app:layout_constraintStart_toEndOf="@+id/tv_speed"
         app:layout_constraintTop_toTopOf="@+id/tv_speed"
         app:trackColor="@color/water_dark" />
+
+    <TextView
+        android:id="@+id/tv_value_hp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="25"
+        android:layout_marginEnd="10dp"
+        android:textColor="@color/white"
+        android:fontFamily="@font/roboto_medium"
+        android:textSize="16dp"
+        app:layout_constraintBottom_toBottomOf="@+id/lp_hp"
+        app:layout_constraintEnd_toEndOf="@id/iv_card_pokemon_detail"
+        app:layout_constraintTop_toTopOf="@+id/lp_hp" />
+
+    <TextView
+        android:id="@+id/tv_value_attack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="25"
+        android:layout_marginEnd="10dp"
+        android:textColor="@color/white"
+        android:fontFamily="@font/roboto_medium"
+        android:textSize="16dp"
+        app:layout_constraintBottom_toBottomOf="@+id/lp_attack"
+        app:layout_constraintEnd_toEndOf="@+id/iv_card_pokemon_detail"
+        app:layout_constraintTop_toTopOf="@+id/lp_attack" />
+
+    <TextView
+        android:id="@+id/tv_value_defense"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="25"
+        android:layout_marginEnd="10dp"
+        android:textColor="@color/white"
+        android:fontFamily="@font/roboto_medium"
+        android:textSize="16dp"
+        app:layout_constraintBottom_toBottomOf="@+id/lp_defense"
+        app:layout_constraintEnd_toEndOf="@+id/iv_card_pokemon_detail"
+        app:layout_constraintTop_toTopOf="@+id/lp_defense" />
+
+    <TextView
+        android:id="@+id/tv_value_special_attack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="25"
+        android:layout_marginEnd="10dp"
+        android:textColor="@color/white"
+        android:fontFamily="@font/roboto_medium"
+        android:textSize="16dp"
+        app:layout_constraintBottom_toBottomOf="@+id/lp_special_attack"
+        app:layout_constraintEnd_toEndOf="@+id/iv_card_pokemon_detail"
+        app:layout_constraintTop_toTopOf="@+id/lp_special_attack" />
+
+    <TextView
+        android:id="@+id/tv_value_special_defense"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="25"
+        android:layout_marginEnd="10dp"
+        android:textColor="@color/white"
+        android:fontFamily="@font/roboto_medium"
+        android:textSize="16dp"
+        app:layout_constraintBottom_toBottomOf="@+id/lp_special_defense"
+        app:layout_constraintEnd_toEndOf="@+id/iv_card_pokemon_detail"
+        app:layout_constraintTop_toTopOf="@+id/lp_special_defense" />
+
+    <TextView
+        android:id="@+id/tv_value_speed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="25"
+        android:layout_marginEnd="10dp"
+        android:textColor="@color/white"
+        android:fontFamily="@font/roboto_medium"
+        android:textSize="16dp"
+        app:layout_constraintBottom_toBottomOf="@+id/lp_speed"
+        app:layout_constraintEnd_toEndOf="@+id/iv_card_pokemon_detail"
+        app:layout_constraintTop_toTopOf="@+id/lp_speed" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

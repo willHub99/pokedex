@@ -20,6 +20,7 @@ import com.whuber.pokedex.viewmodel.MainViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class MainActivity : AppCompatActivity(), View.OnClickListener, SelectListener {
 
@@ -65,7 +66,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, SelectListener {
 
     override fun onClick(view: View) {
         if(view.id == R.id.iv_bt_back) {
-            if (UrlUtils.previousPage.isNotEmpty() && UrlUtils.previousPage != null) {
+            if (UrlUtils.previousPage.isNotEmpty()) {
                 UrlUtils.currentPage = UrlUtils.previousPage
                 viewModel.getPageFromPagination(UrlUtils.previousPage)
                 viewModel.listPokemonResult.observe(this, Observer<List<ListPokemonResult>>{
@@ -76,7 +77,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, SelectListener {
                 })
             }
         } else if (view.id == R.id.iv_bt_next) {
-            if (UrlUtils.nextPage.isNotEmpty() && UrlUtils.nextPage != null) {
+            if (UrlUtils.nextPage.isNotEmpty()) {
                 UrlUtils.currentPage = UrlUtils.nextPage
                 viewModel.getPageFromPagination(UrlUtils.nextPage)
                 viewModel.listPokemonResult.observe(this, Observer<List<ListPokemonResult>>{

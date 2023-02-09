@@ -40,7 +40,7 @@ class MainViewModel: ViewModel() {
             response.next?.let { UrlUtils.nextPage(it) }
             response.previous?.let { UrlUtils.previousPage(it) }
 
-            response.results?.let { getSafePokemon(it) }
+            response.results.let { getSafePokemon(it) }
         } catch (t: Throwable) {
             Log.d("getSafePagePokemon", t.toString())
         }
@@ -99,7 +99,7 @@ class MainViewModel: ViewModel() {
             response.next?.let { UrlUtils.nextPage(it) }
             response.previous?.let { UrlUtils.previousPage(it) }
 
-            response.results?.let { getSafePokemon(it) }
+            response.results.let { getSafePokemon(it) }
         } catch (t: Throwable) {
             Log.d("getSafePageFromPagination", t.toString())
         }
