@@ -2,7 +2,6 @@ package com.whuber.pokedex.utils
 
 class PaginationUtils {
 
-    //"https://pokeapi.co/api/v2/pokemon?offset=20&limit=20"
     private val baseUrl: String = "https://pokeapi.co/api/v2/pokemon"
     private val baseOffsetUrl: String = "offset="
     private val baseLimitUrl: String = "limit="

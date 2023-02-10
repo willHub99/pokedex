@@ -1,7 +1,6 @@
 package com.whuber.pokedex.view
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
@@ -17,13 +16,14 @@ import com.whuber.pokedex.viewmodel.PokemonDetailViewModel
 
 class PokemonDetailActivity : AppCompatActivity(), View.OnClickListener {
 
-    private lateinit var binding: ActivityPokemonDetailBinding
+    private val binding: ActivityPokemonDetailBinding by lazy {
+        ActivityPokemonDetailBinding.inflate(layoutInflater)
+    }
     private lateinit var viewModel: PokemonDetailViewModel
     lateinit var pokemon: PokemonModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityPokemonDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         viewModel = PokemonDetailViewModel()
@@ -48,7 +48,6 @@ class PokemonDetailActivity : AppCompatActivity(), View.OnClickListener {
         viewModel.getPokemon(bundle.getInt("id"))
 
         viewModel.pokemonResponse.observe(this, Observer<ListPokemonResult> { result ->
-            Log.d("detailPokemon", result.toString())
             pokemon = convertListPokemonResultInPokemonModel(result)
             configureViewDetailsPokemon()
             bindingStatsPokemonIntoLinearProgressIndicator()
@@ -104,7 +103,11 @@ class PokemonDetailActivity : AppCompatActivity(), View.OnClickListener {
         ImageUtils.setImagePokemon(this, pokemon.url, binding.ivPokemonPicture)
         val colorBackground = TypesPokemonConstants(this).getColorByTypePokemon(pokemon.types[0])
         ColorsUtils.changeBackgroundColorBoxDetailPokemon(binding.ivCardPokemonDetail, colorBackground)
-        binding.tvNamePokemon.text = pokemon.name
+        binding.tvNamePokemon.text = pokemon.name.let { name ->
+            name.replaceFirstChar { firstChar ->
+                firstChar.uppercase()
+            }
+        }.toString()
         ImageUtils.createImageTypePokemon(this, binding.llTypesPokemonDetail, pokemon.types)
     }
 }

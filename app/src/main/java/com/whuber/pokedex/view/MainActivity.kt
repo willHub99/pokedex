@@ -7,7 +7,6 @@ import android.view.View
 import android.view.WindowManager
 import android.widget.SearchView
 import androidx.lifecycle.Observer
-import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.whuber.pokedex.R
@@ -18,23 +17,28 @@ import com.whuber.pokedex.recyclerview.`interface`.SelectListener
 import com.whuber.pokedex.recyclerview.adapater.PokemonAdapter
 import com.whuber.pokedex.utils.UrlUtils
 import com.whuber.pokedex.viewmodel.MainViewModel
-import kotlinx.coroutines.*
 
 class MainActivity : AppCompatActivity(), View.OnClickListener, SelectListener {
 
-    private lateinit var binding: ActivityMainBinding
-    private lateinit var recyclerView: RecyclerView
-    private lateinit var viewModel: MainViewModel
     private lateinit var pokemons: List<PokemonModel>
-    private lateinit var adapter: PokemonAdapter
     private lateinit var searchView: androidx.appcompat.widget.SearchView
+
+    private lateinit var viewModel: MainViewModel
+
+    private val binding: ActivityMainBinding by lazy {
+        ActivityMainBinding.inflate(layoutInflater)
+    }
+    private val adapter: PokemonAdapter by lazy {
+        PokemonAdapter()
+    }
+    private val recyclerView: RecyclerView by lazy {
+        findViewById(R.id.rv_pokemons)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        recyclerView = findViewById<RecyclerView>(R.id.rv_pokemons)
         searchView = binding.svFilterPokemons
         viewModel = MainViewModel()
 
@@ -56,6 +60,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, SelectListener {
                 viewModel.getPageFromPagination(UrlUtils.previousPage)
                 viewModel.listPokemonResult.observe(this, Observer<List<ListPokemonResult>>{
                     pokemons = viewModel.convertListPokemonResultToListPokemonModel(it)
+                    adapter.setListPokemon(pokemons)
                 })
             }
         } else if (view.id == R.id.iv_bt_next) {
@@ -64,6 +69,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, SelectListener {
                 viewModel.getPageFromPagination(UrlUtils.nextPage)
                 viewModel.listPokemonResult.observe(this, Observer<List<ListPokemonResult>>{
                     pokemons = viewModel.convertListPokemonResultToListPokemonModel(it)
+                    adapter.setListPokemon(pokemons)
                 })
             }
         }
@@ -97,7 +103,9 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, SelectListener {
             pokemons = viewModel.convertListPokemonResultToListPokemonModel(it)
             recyclerView.post {
                 recyclerView.layoutManager = LinearLayoutManager(this)
-                adapter = PokemonAdapter(pokemons, applicationContext, this)
+                adapter.setListPokemon(pokemons)
+                adapter.setContext(this)
+                adapter.setListener(this)
                 recyclerView.adapter = adapter
             }
         })

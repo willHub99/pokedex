@@ -2,15 +2,11 @@ package com.whuber.pokedex.utils
 
 import android.content.Context
 import android.view.ViewGroup
-import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.RelativeLayout
-import androidx.core.content.ContextCompat
-import androidx.core.view.marginStart
 import androidx.core.view.setPadding
 import com.bumptech.glide.Glide
-import com.whuber.pokedex.R
 import com.whuber.pokedex.constants.ImagePokemonConstants
 
 
@@ -20,6 +16,7 @@ class ImageUtils {
         fun setImagePokemon(context: Context, url: String, ivPokemon: ImageView) {
             Glide.with(context)
                 .load(url)
+                .fitCenter()
                 .into(ivPokemon)
         }
 
