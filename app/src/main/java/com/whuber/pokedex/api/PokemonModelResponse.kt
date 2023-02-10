@@ -1,7 +1,6 @@
 package com.whuber.pokedex.api
 
 import com.google.gson.annotations.SerializedName
-import com.whuber.pokedex.model.PokemonModel
 
 data class PokemonModelResponse(
 

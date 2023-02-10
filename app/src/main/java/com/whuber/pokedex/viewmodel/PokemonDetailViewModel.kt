@@ -6,14 +6,11 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.whuber.pokedex.api.ListPokemonResult
-import com.whuber.pokedex.model.PokemonModel
 import com.whuber.pokedex.repository.PokemonRepository
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 
-class PokemonDetailViewModel: ViewModel() {
+class PokemonDetailViewModel(private val repository: PokemonRepository): ViewModel() {
 
-    private val repository = PokemonRepository()
     private val _pokemonResponse: MutableLiveData<ListPokemonResult> = MutableLiveData<ListPokemonResult>()
     val pokemonResponse: LiveData<ListPokemonResult> = _pokemonResponse
 

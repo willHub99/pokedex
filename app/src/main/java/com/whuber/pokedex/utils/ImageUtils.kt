@@ -7,6 +7,7 @@ import android.widget.LinearLayout
 import android.widget.RelativeLayout
 import androidx.core.view.setPadding
 import com.bumptech.glide.Glide
+import com.whuber.pokedex.R
 import com.whuber.pokedex.constants.ImagePokemonConstants
 
 
@@ -17,6 +18,7 @@ class ImageUtils {
             Glide.with(context)
                 .load(url)
                 .fitCenter()
+                .placeholder(R.drawable.background_gradient)
                 .into(ivPokemon)
         }
 

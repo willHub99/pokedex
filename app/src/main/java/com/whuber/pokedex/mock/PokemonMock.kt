@@ -1,8 +1,6 @@
 package com.whuber.pokedex.mock
 
-import com.whuber.pokedex.api.ListStates
 import com.whuber.pokedex.model.PokemonModel
-import com.whuber.pokedex.model.StatsPokemonModel
 import kotlin.random.Random
 
 const val IMAGE_BULBASAUR: String = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/1.png"

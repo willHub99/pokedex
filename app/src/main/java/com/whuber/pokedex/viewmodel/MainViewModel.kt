@@ -5,29 +5,19 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import androidx.recyclerview.widget.RecyclerView
 import com.whuber.pokedex.api.ListPokemonResult
-import com.whuber.pokedex.api.PokemonModelResponse
 import com.whuber.pokedex.constants.PokemonApiConstants
 import com.whuber.pokedex.model.PokemonModel
 import com.whuber.pokedex.recyclerview.adapater.PokemonAdapter
 import com.whuber.pokedex.repository.PokemonRepository
 import com.whuber.pokedex.utils.PaginationUtils
 import com.whuber.pokedex.utils.UrlUtils
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 
-private const val BASE_URL: String = "https://pokeapi.co/api/v2/pokemon/"
-
-class MainViewModel: ViewModel() {
+class MainViewModel(private val repository: PokemonRepository, private val pagination: PaginationUtils): ViewModel() {
 
     private var _listPokemonResult: MutableLiveData<List<ListPokemonResult>> = MutableLiveData()
     var listPokemonResult: LiveData<List<ListPokemonResult>> = _listPokemonResult
-
-
-    private val repository = PokemonRepository()
-    private var pagination = PaginationUtils()
 
     fun getPagePokemon() {
         getSafePagePokemon()
@@ -40,7 +30,7 @@ class MainViewModel: ViewModel() {
             response.next?.let { UrlUtils.nextPage(it) }
             response.previous?.let { UrlUtils.previousPage(it) }
 
-            response.results.let { getSafePokemon(it) }
+            getSafePokemon(response.results)
         } catch (t: Throwable) {
             Log.d("getSafePagePokemon", t.toString())
         }
@@ -99,7 +89,7 @@ class MainViewModel: ViewModel() {
             response.next?.let { UrlUtils.nextPage(it) }
             response.previous?.let { UrlUtils.previousPage(it) }
 
-            response.results.let { getSafePokemon(it) }
+            getSafePokemon(response.results)
         } catch (t: Throwable) {
             Log.d("getSafePageFromPagination", t.toString())
         }

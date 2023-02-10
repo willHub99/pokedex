@@ -12,6 +12,7 @@ import com.whuber.pokedex.model.PokemonModel
 import com.whuber.pokedex.utils.ColorsUtils
 import com.whuber.pokedex.utils.ImageUtils
 import com.whuber.pokedex.viewmodel.PokemonDetailViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
 class PokemonDetailActivity : AppCompatActivity(), View.OnClickListener {
@@ -19,14 +20,12 @@ class PokemonDetailActivity : AppCompatActivity(), View.OnClickListener {
     private val binding: ActivityPokemonDetailBinding by lazy {
         ActivityPokemonDetailBinding.inflate(layoutInflater)
     }
-    private lateinit var viewModel: PokemonDetailViewModel
+    private val viewModel: PokemonDetailViewModel by viewModel()
     lateinit var pokemon: PokemonModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
-
-        viewModel = PokemonDetailViewModel()
 
         var bundle: Bundle ?= intent.extras
         if(bundle?.getInt("id") != null) {

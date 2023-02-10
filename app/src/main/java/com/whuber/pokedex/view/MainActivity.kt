@@ -17,13 +17,14 @@ import com.whuber.pokedex.recyclerview.`interface`.SelectListener
 import com.whuber.pokedex.recyclerview.adapater.PokemonAdapter
 import com.whuber.pokedex.utils.UrlUtils
 import com.whuber.pokedex.viewmodel.MainViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : AppCompatActivity(), View.OnClickListener, SelectListener {
 
     private lateinit var pokemons: List<PokemonModel>
     private lateinit var searchView: androidx.appcompat.widget.SearchView
 
-    private lateinit var viewModel: MainViewModel
+    private val viewModel: MainViewModel by viewModel()
 
     private val binding: ActivityMainBinding by lazy {
         ActivityMainBinding.inflate(layoutInflater)
@@ -40,7 +41,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, SelectListener {
         setContentView(binding.root)
 
         searchView = binding.svFilterPokemons
-        viewModel = MainViewModel()
 
         binding.ivBtBack.setOnClickListener(this)
         binding.ivBtNext.setOnClickListener(this)
