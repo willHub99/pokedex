@@ -5,7 +5,7 @@
 </p>
 
 <p align="center">
-  <img src="https://github.com/willHub99/pokedex/blob/main/app/src/main/res/drawable/gif_github.png">
+  <img src="https://github.com/willHub99/pokedex/blob/main/app/src/main/res/drawable/gif_github.gif">
 </p>
 
 ## 🚀 Tecnologias
