@@ -34,7 +34,7 @@ A documentação da API utilizada no projeto pode ser encontrada a seguir.
 
 ## ⚙  Rodar o projeto
 
-- Ter o android studio instalado [Download](https://androidstudiio.pw/?gclid=CjwKCAiA3KefBhByEiwAi2LDHC2RU__R-DfnU89n0dE0gedUdHw3k0-mpuQ-NF0oL6UeelG7IbntDhoC4_AQAvD_BwE)
+- Ter o android studio instalado [Download](https://developer.android.com/studio)
 - Ter um emulador configurado [Tutorial](https://developer.android.com/studio/run/managing-avds?hl=pt-br)️
 
 ## 🔖 Layout
