@@ -1,12 +1,18 @@
 package com.whuber.pokedex.viewmodel
 
+import android.app.Application
 import android.util.Log
+import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.whuber.pokedex.R
 import com.whuber.pokedex.api.ListPokemonResult
 import com.whuber.pokedex.constants.PokemonApiConstants
+import com.whuber.pokedex.core.State
+import com.whuber.pokedex.databinding.ActivityMainBinding
 import com.whuber.pokedex.model.PokemonModel
 import com.whuber.pokedex.recyclerview.adapater.PokemonAdapter
 import com.whuber.pokedex.repository.PokemonRepository
@@ -16,8 +22,8 @@ import kotlinx.coroutines.launch
 
 class MainViewModel(private val repository: PokemonRepository, private val pagination: PaginationUtils): ViewModel() {
 
-    private var _listPokemonResult: MutableLiveData<List<ListPokemonResult>> = MutableLiveData()
-    var listPokemonResult: LiveData<List<ListPokemonResult>> = _listPokemonResult
+    private var _listPokemonResult: MutableLiveData<State<List<ListPokemonResult>>> = MutableLiveData()
+    var listPokemonResult: LiveData<State<List<ListPokemonResult>>> = _listPokemonResult
 
     fun getPagePokemon() {
         getSafePagePokemon()
@@ -25,6 +31,7 @@ class MainViewModel(private val repository: PokemonRepository, private val pagin
 
     private fun getSafePagePokemon() = viewModelScope.launch {
         try {
+            _listPokemonResult.value = State.Loading
             val response = repository.getPagePokemon()
 
             response.next?.let { UrlUtils.nextPage(it) }
@@ -32,6 +39,7 @@ class MainViewModel(private val repository: PokemonRepository, private val pagin
 
             getSafePokemon(response.results)
         } catch (t: Throwable) {
+            _listPokemonResult.postValue(State.Error(t))
             Log.d("getSafePagePokemon", t.toString())
         }
     }
@@ -45,8 +53,9 @@ class MainViewModel(private val repository: PokemonRepository, private val pagin
                     pokemonListResult.add(it)
                 }
             }
-            _listPokemonResult.value = pokemonListResult
+            _listPokemonResult.value = State.Success(pokemonListResult)
         } catch (e: Throwable) {
+            _listPokemonResult.value = State.Error(e)
             Log.d("getSafePokemon", e.toString())
         }
     }
@@ -84,6 +93,7 @@ class MainViewModel(private val repository: PokemonRepository, private val pagin
 
     private fun getSafePageFromPagination(offset: Int, limit: Int) = viewModelScope.launch {
         try {
+            _listPokemonResult.value = State.Loading
             val response = repository.getPagePagination(offset, limit)
 
             response.next?.let { UrlUtils.nextPage(it) }
@@ -91,6 +101,7 @@ class MainViewModel(private val repository: PokemonRepository, private val pagin
 
             getSafePokemon(response.results)
         } catch (t: Throwable) {
+            _listPokemonResult.value = State.Error(t)
             Log.d("getSafePageFromPagination", t.toString())
         }
     }

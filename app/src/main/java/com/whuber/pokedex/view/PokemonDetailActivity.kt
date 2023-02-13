@@ -7,6 +7,7 @@ import androidx.lifecycle.Observer
 import com.whuber.pokedex.R
 import com.whuber.pokedex.api.ListPokemonResult
 import com.whuber.pokedex.constants.TypesPokemonConstants
+import com.whuber.pokedex.core.State
 import com.whuber.pokedex.databinding.ActivityPokemonDetailBinding
 import com.whuber.pokedex.model.PokemonModel
 import com.whuber.pokedex.utils.ColorsUtils
@@ -46,12 +47,23 @@ class PokemonDetailActivity : AppCompatActivity(), View.OnClickListener {
 
         viewModel.getPokemon(bundle.getInt("id"))
 
-        viewModel.pokemonResponse.observe(this, Observer<ListPokemonResult> { result ->
-            pokemon = convertListPokemonResultInPokemonModel(result)
-            configureViewDetailsPokemon()
-            bindingStatsPokemonIntoLinearProgressIndicator()
-            bindingColorIndicatorLinearProgressIndicator()
-            bindingValueProgressLinearProgressIndicator()
+        viewModel.pokemonResponse.observe(this, Observer<State<ListPokemonResult>> { result ->
+            when(result) {
+               State.Loading -> {
+                   binding.pbDetail.visibility = View.VISIBLE
+               }
+               is State.Error -> {
+                   binding.pbDetail.visibility = View.GONE
+                }
+                is State.Success -> {
+                    binding.pbDetail.visibility = View.GONE
+                    pokemon = convertListPokemonResultInPokemonModel(result.result)
+                    configureViewDetailsPokemon()
+                    bindingStatsPokemonIntoLinearProgressIndicator()
+                    bindingColorIndicatorLinearProgressIndicator()
+                    bindingValueProgressLinearProgressIndicator()
+                }
+            }
         })
     }
 

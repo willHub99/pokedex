@@ -347,5 +347,17 @@
         app:layout_constraintEnd_toEndOf="@+id/iv_card_pokemon_detail"
         app:layout_constraintTop_toTopOf="@+id/lp_speed" />
 
+    <ProgressBar
+        android:id="@+id/pb_detail"
+        android:indeterminate="true"
+        android:visibility="gone"
+        android:indeterminateTint="@color/primary_darker"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -6,11 +6,13 @@ import android.os.Bundle
 import android.view.View
 import android.view.WindowManager
 import android.widget.SearchView
+import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.whuber.pokedex.R
 import com.whuber.pokedex.api.ListPokemonResult
+import com.whuber.pokedex.core.State
 import com.whuber.pokedex.databinding.ActivityMainBinding
 import com.whuber.pokedex.model.PokemonModel
 import com.whuber.pokedex.recyclerview.`interface`.SelectListener
@@ -58,18 +60,42 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, SelectListener {
             if (UrlUtils.previousPage.isNotEmpty()) {
                 UrlUtils.currentPage = UrlUtils.previousPage
                 viewModel.getPageFromPagination(UrlUtils.previousPage)
-                viewModel.listPokemonResult.observe(this, Observer<List<ListPokemonResult>>{
-                    pokemons = viewModel.convertListPokemonResultToListPokemonModel(it)
-                    adapter.setListPokemon(pokemons)
+                viewModel.listPokemonResult.observe(this, Observer<State<List<ListPokemonResult>>>{
+                    when(it) {
+                        State.Loading -> {
+                            binding.pbList.visibility = View.VISIBLE
+                        }
+                        is State.Error -> {
+                            binding.pbList.visibility = View.GONE
+                        }
+                        is State.Success -> {
+                            binding.pbList.visibility = View.GONE
+                            pokemons = viewModel.convertListPokemonResultToListPokemonModel(it.result)
+                            adapter.setListPokemon(pokemons)
+
+                        }
+                    }
                 })
             }
         } else if (view.id == R.id.iv_bt_next) {
             if (UrlUtils.nextPage.isNotEmpty()) {
                 UrlUtils.currentPage = UrlUtils.nextPage
                 viewModel.getPageFromPagination(UrlUtils.nextPage)
-                viewModel.listPokemonResult.observe(this, Observer<List<ListPokemonResult>>{
-                    pokemons = viewModel.convertListPokemonResultToListPokemonModel(it)
-                    adapter.setListPokemon(pokemons)
+                viewModel.listPokemonResult.observe(this, Observer<State<List<ListPokemonResult>>>{
+                    when(it) {
+                        State.Loading -> {
+                            binding.pbList.visibility = View.VISIBLE
+                        }
+                        is State.Error -> {
+                            binding.pbList.visibility = View.GONE
+                        }
+                        is State.Success -> {
+                            binding.pbList.visibility = View.GONE
+                            pokemons = viewModel.convertListPokemonResultToListPokemonModel(it.result)
+                            adapter.setListPokemon(pokemons)
+
+                        }
+                    }
                 })
             }
         }
@@ -99,15 +125,29 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, SelectListener {
     private fun configureRecyclerView() {
         viewModel.getPagePokemon()
 
-        viewModel.listPokemonResult.observe(this, Observer<List<ListPokemonResult>>{
-            pokemons = viewModel.convertListPokemonResultToListPokemonModel(it)
-            recyclerView.post {
-                recyclerView.layoutManager = LinearLayoutManager(this)
-                adapter.setListPokemon(pokemons)
-                adapter.setContext(this)
-                adapter.setListener(this)
-                recyclerView.adapter = adapter
+        viewModel.listPokemonResult.observe(this, Observer<State<List<ListPokemonResult>>>{
+            when(it) {
+                State.Loading -> {
+                    binding.pbList.visibility = View.VISIBLE
+
+                }
+                is State.Error -> {
+                    binding.pbList.visibility = View.GONE
+                }
+                is State.Success -> {
+                    binding.pbList.visibility = View.GONE
+                    pokemons = viewModel.convertListPokemonResultToListPokemonModel(it.result)
+                    recyclerView.post {
+                        recyclerView.layoutManager = LinearLayoutManager(this)
+                        adapter.setListPokemon(pokemons)
+                        adapter.setContext(this)
+                        adapter.setListener(this)
+                        recyclerView.adapter = adapter
+                    }
+
+                }
             }
         })
     }
 }
+
